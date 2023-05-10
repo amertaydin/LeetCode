@@ -12,7 +12,7 @@ public:
         while (spiral.size() < rowLength * columnLength) {
 
             for (int col = left; col <= right; col++) {
-                spiral.push_back(matrix[left][col]);
+                spiral.push_back(matrix[up][col]);
             }
 
             // Increase up by 1 to avoid including top right member again
