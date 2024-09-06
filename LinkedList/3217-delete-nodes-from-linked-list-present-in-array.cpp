@@ -9,35 +9,43 @@
 #include <vector>
 #include <set>
 
-  struct ListNode {
-      int val;
-      ListNode *next;
-      ListNode() : val(0), next(nullptr) {}
-      ListNode(int x) : val(x), next(nullptr) {}
-      ListNode(int x, ListNode *next) : val(x), next(next) {}
-  };
- 
-class Solution {
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution
+{
 public:
-    ListNode* modifiedList(std::vector<int>& nums, ListNode* head) {
+    ListNode *modifiedList(std::vector<int> &nums, ListNode *head)
+    {
         std::set<int> s(nums.begin(), nums.end());
 
-        ListNode* dummyHead = new ListNode(0);
-        ListNode* curr = head;
-        ListNode* prev = dummyHead;
-        ListNode* toDelete = nullptr;
+        ListNode *dummyHead = new ListNode(0);
+        ListNode *curr = head;
+        ListNode *prev = dummyHead;
+        ListNode *toDelete = nullptr;
         dummyHead->next = head;
 
-        while (curr != nullptr) {
-            if(s.find(curr->val) != s.end()) {
+        while (curr != nullptr)
+        {
+            if (s.find(curr->val) != s.end())
+            {
                 prev->next = curr->next;
                 toDelete = curr;
-            } else {
+            }
+            else
+            {
                 prev = curr;
             }
             curr = curr->next;
 
-            if (toDelete != nullptr) {
+            if (toDelete != nullptr)
+            {
                 delete toDelete;
                 toDelete = nullptr;
             }
