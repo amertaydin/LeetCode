@@ -18,21 +18,15 @@ class Solution
 public:
     ListNode *middleNode(ListNode *head)
     {
-        ListNode *curr = head;
-        int size = 0;
-        int count = 0;
+        ListNode *slow = head;
+        ListNode *fast = head;
 
-        while (curr != nullptr)
+        while (fast && fast->next)
         {
-            count++;
-            curr = curr->next;
+            slow = slow->next;
+            fast = fast->next->next;
         }
 
-        for (int i = 0; i < count / 2; i++)
-        {
-            head = head->next;
-        }
-
-        return head;
+        return slow;
     }
 };
